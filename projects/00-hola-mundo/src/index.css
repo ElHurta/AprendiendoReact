@@ -1,0 +1,87 @@
+
+body{
+    margin: 0;
+    background-color: #313131;
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+.md-twitter-card {
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(32, 32, 32);
+    padding: 1rem 2rem;
+}
+
+.md-twitter-card-header {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.md-twitter-card-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.md-twitter-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.md-twitter-card-info-userName {
+    color: #8a8a8a;
+}
+
+.md-twitter-card-followButton {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.md-twitter-card-followButton.is-following {
+    background-color: #1da1f2;
+    color: #ffffff;
+}
+
+.md-twitter-card-followButton:hover {
+    background-color: #e6e6e6;
+}
+
+.md-twitter-card-followButton.is-following:hover {
+    background-color: #ff2d2d46;
+    color: red;
+    border: 1px solid red;
+}
+
+.md-twitter-card-followButton .md-twitter-card-info-follwingState{
+    display: block;
+}
+
+.md-twitter-card-info-stopFollow {
+    display: none;
+}
+
+.md-twitter-card-followButton.is-following:hover .md-twitter-card-info-stopFollow {
+    display: block;
+}
+
+.md-twitter-card-followButton.is-following:hover .md-twitter-card-info-followState {
+    display: none;
+}
+
+
