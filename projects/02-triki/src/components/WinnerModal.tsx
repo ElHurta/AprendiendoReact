@@ -11,9 +11,14 @@ export function WinnerModal ({ winner, resetGame } : {winner: string | boolean |
             <div className='text'>
                 <h2>{winnerText}</h2>
 
-                <header className='win'>
-                    {winner && <Square>{winner}</Square>}
-                </header>
+                {winner ?
+                    <>
+                        <header className='win'>
+
+                            <Square>{winner}</Square>
+                        </header>
+                    </> : null
+                }
 
                 <footer>
                     <button onClick={resetGame}>

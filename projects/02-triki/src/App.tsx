@@ -5,13 +5,25 @@ import { WinnerModal } from './components/WinnerModal'
 import { Board } from './components/Board'
 import confetti from 'canvas-confetti'
 
+import { saveGameToLocalStorage, resetGameOnLocalStorage } from './utils/storage-service'
+
 import './App.css'
 
 function App() {
 
-  const [board, setBoard] = useState(Array(9).fill(null))
+  const [board, setBoard] = useState<Array<any>>(
+    () => {
+      const boardFromLocalStorage = window.localStorage.getItem('board')
+      return boardFromLocalStorage ? JSON.parse(boardFromLocalStorage) : Array(9).fill(null)
+    }
+  )
 
-  const [turn, setTurn] = useState(TURNS.X)
+  const [turn, setTurn] = useState<String>(
+    () => {
+      const turnFromLocalStorage = window.localStorage.getItem('turn')
+      return turnFromLocalStorage ? turnFromLocalStorage : TURNS.X
+    }
+  )
 
   const [winner, setWinner] = useState<string | boolean | null>(null) // null = no winner;  false = tie
 
@@ -28,6 +40,8 @@ function App() {
     setBoard(Array(9).fill(null))
     setTurn(TURNS.X)
     setWinner(null)
+
+    resetGameOnLocalStorage()
   }
 
   const updateBoard = (index: number) => {
@@ -40,6 +54,11 @@ function App() {
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+
+    saveGameToLocalStorage({
+      board: newBoard,
+      turn: newTurn
+    })
 
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
