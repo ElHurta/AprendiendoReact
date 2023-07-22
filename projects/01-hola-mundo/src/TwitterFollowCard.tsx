@@ -32,7 +32,7 @@ export function TwitterFollowCard(
             <img
                 className="md-twitter-card-avatar"
                 src={`https://unavatar.io/twitter/${userName}`}
-                alt="Avatar de Hurta"
+                alt={`Avatar de ${name}`}
             />
             <div className="md-twitter-card-info">
             <strong>{name}{children}</strong>
